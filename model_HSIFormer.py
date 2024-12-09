@@ -193,22 +193,23 @@ def HSIFormer(
     optimizer = tfa.optimizers.AdamW(
             learning_rate=learning_rate, weight_decay=weight_decay
         )
+    
+ '''
     model.compile(
             optimizer=optimizer,
             loss=keras.losses.SparseCategoricalCrossentropy(from_logits=False),
             metrics=[
                 keras.metrics.SparseCategoricalAccuracy(name="accuracy"),
+                
             ],
         )
+    '''
+    model.compile(loss=categorical_crossentropy, optimizer=Adam(learning_rate=learning_rate), metrics=['accuracy'])
+    
 
     return model
 
 
-
-
-
-
-########################################## Without k-fold data validation
 
 
 
